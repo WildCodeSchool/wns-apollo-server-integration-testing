@@ -7,11 +7,11 @@ async function createServer() {
     resolvers: [WilderResolver],
   });
   // Create the GraphQL server
-const server = new ApolloServer({
+  const server = new ApolloServer({
     schema,
     playground: true,
-});
-return server;
+  });
+  return server;
 }
 
-export default createServer
+export default createServer;
