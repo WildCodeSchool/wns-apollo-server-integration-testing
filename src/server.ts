@@ -1,6 +1,6 @@
-import { ApolloServer } from "apollo-server";
-import { buildSchema } from "type-graphql";
-import WilderResolver from "./resolvers/WilderResolver";
+import { ApolloServer } from 'apollo-server';
+import { buildSchema } from 'type-graphql';
+import WilderResolver from './resolvers/WilderResolver';
 
 async function createServer() {
   const schema = await buildSchema({

@@ -1,5 +1,5 @@
-import { Field, ID, ObjectType } from "type-graphql";
-import Skill from "./Skill";
+import { Field, ID, ObjectType } from 'type-graphql';
+import Skill from './Skill';
 
 @ObjectType()
 class Wilder {

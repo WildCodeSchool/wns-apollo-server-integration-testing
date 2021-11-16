@@ -1,10 +1,10 @@
-import "reflect-metadata";
+import 'reflect-metadata';
 
-import createConnection from "./createConnection";
-import createServer from "./server";
+import createConnection from './createConnection';
+import createServer from './server';
 
 async function start() {
-  await createConnection("mongodb://127.0.0.1:27017/wilderdb");
+  await createConnection('mongodb://127.0.0.1:27017/wilderdb');
 
   const server = await createServer();
 
