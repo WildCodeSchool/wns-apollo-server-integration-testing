@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server';
 import { buildSchema } from 'type-graphql';
 import WilderResolver from './resolvers/WilderResolver';

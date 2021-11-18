@@ -4,7 +4,7 @@ import { Field, ID, Int, ObjectType } from 'type-graphql';
 class Skill {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @Field((type) => ID)
-  id!: string;
+  _id!: string;
 
   @Field()
   title!: string;
