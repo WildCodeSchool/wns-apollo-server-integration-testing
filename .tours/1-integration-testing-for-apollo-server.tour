@@ -1,0 +1,160 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "1 Integration testing for Apollo Server",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "This codetour is a about setting up and using jest to test a server built with Apollo Server"
+    },
+    {
+      "file": "jest.config.js",
+      "description": "As we need to perform some setup we specify the setup script to jest",
+      "line": 5
+    },
+    {
+      "file": "src/test/setup.ts",
+      "description": "`beforeAll` will be called one time before all tests.",
+      "line": 9
+    },
+    {
+      "file": "src/test/setup.ts",
+      "description": "As we don't want our tests to modify our application database, we use and create a connection to a `fake` mogodatabase stored only in memory.\n\nIf `SQL` is required you can perform the same with a `Sqlite in memory` database",
+      "line": 12
+    },
+    {
+      "file": "src/test/setup.ts",
+      "description": "before each test we delete the collection so test does not affect each others.",
+      "line": 17
+    },
+    {
+      "file": "src/test/setup.ts",
+      "description": "after all the tests are completed we close the database.",
+      "line": 21
+    },
+    {
+      "file": "src/createConnection.ts",
+      "description": "Take note that we need to separate the connection code from the project index.\n\nIn development or production cases, we call this function with the uri of a functioning database\n\nIn test case we call this function with the in memory database",
+      "line": 11
+    },
+    {
+      "file": "src/server.ts",
+      "description": "We also need to separate the server creation from `index.ts`",
+      "line": 13
+    },
+    {
+      "file": "src/index.ts",
+      "description": "`index.ts` is responsible to create the connection and the server for production.\n\nThis is not what we will test.",
+      "line": 22,
+      "selection": {
+        "start": {
+          "line": 1,
+          "character": 1
+        },
+        "end": {
+          "line": 1,
+          "character": 27
+        }
+      }
+    },
+    {
+      "file": "src/resolvers/WilderResolver.ts",
+      "description": "We want to test the resolver for the wilder entity.",
+      "line": 1,
+      "selection": {
+        "start": {
+          "line": 15,
+          "character": 26
+        },
+        "end": {
+          "line": 16,
+          "character": 22
+        }
+      }
+    },
+    {
+      "file": "src/resolvers/WilderResolver.ts",
+      "description": "Is the mutation correctly saving a wilder in the database ?",
+      "line": 21
+    },
+    {
+      "file": "src/resolvers/WilderResolver.ts",
+      "description": "Is the query correctly retrieving the wilders from the database ?",
+      "line": 12
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "Testing the mutation",
+      "line": 12
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "We create a server before lauching the tests.",
+      "line": 8
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "Define the graphQl mutation as you would type it in the GraphQl playground.",
+      "line": 22
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "Define the variables.",
+      "line": 24
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "Execute the operation.\n\nThis will call the resolver.",
+      "line": 29
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "Accessing the response data.",
+      "line": 31
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "First expectation: the received data should match the variables input content.\n\n`expect.objectContaining` allows us to pass the test without having to specify the `_id` of the response.\n\nRemove it to understand its purpose.\n\nsee https://jestjs.io/fr/docs/expect#expectobjectcontainingobject",
+      "line": 34,
+      "selection": {
+        "start": {
+          "line": 34,
+          "character": 8
+        },
+        "end": {
+          "line": 34,
+          "character": 32
+        }
+      }
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "Second expectation: The wilder stored in the database with the response `_id` has the same name.\n\nNote that we use a regular `mongoose` model to query the fake database.",
+      "line": 40
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "Testing the query `all wilders`",
+      "line": 44
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "First we need to add some wilders in the database.\n\nRemember that we delete the collection wilders after each test, so the wilder saved in the mutation test is not existing when we execute this test.",
+      "line": 50
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "Executing the query.",
+      "line": 64
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "First expectation: the response is an array containing the correct data.",
+      "line": 69
+    },
+    {
+      "file": "src/resolvers/WilderResolver.test.ts",
+      "description": "Second expectation: The first wilder from the response has the same _id as its corresponding document.",
+      "line": 71
+    }
+  ]
+}
