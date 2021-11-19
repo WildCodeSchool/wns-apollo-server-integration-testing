@@ -40,4 +40,35 @@ describe('wilder resolver', () => {
       expect(wilderInDb?.name).toBe(wilderFromResponse.name);
     });
   });
+  describe('query all wilders', () => {
+    it('returns all wilders from database', async () => {
+      const wilder1Data = { name: 'Jane Doe', city: 'Paris' };
+      const wilder2Data = { name: 'John Doe', city: 'Paris' };
+      const wilder1InDb = new WilderModel(wilder1Data);
+      const wilder2InDb = new WilderModel(wilder2Data);
+      await wilder1InDb.save();
+      await wilder2InDb.save();
+
+      const allWildersQuery = gql`
+        query allWilders {
+          allWilders {
+            _id
+            name
+            city
+          }
+        }
+      `;
+
+      const res = await server.executeOperation({
+        query: allWildersQuery,
+      });
+
+      expect(res.data?.allWilders).toEqual([
+        expect.objectContaining(wilder1Data),
+        expect.objectContaining(wilder2Data),
+      ]);
+      // eslint-disable-next-line no-underscore-dangle
+      expect(res.data?.allWilders[0]._id).toBe(wilder1InDb._id.toString());
+    });
+  });
 });
