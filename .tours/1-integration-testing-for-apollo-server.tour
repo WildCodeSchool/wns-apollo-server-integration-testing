@@ -8,7 +8,7 @@
     },
     {
       "file": "jest.config.js",
-      "description": "As we need to perform some setup we specify the setup script to jest",
+      "description": "As we need to perform some setup, we specify the path to the setup script to jest.",
       "line": 5
     },
     {
@@ -23,17 +23,17 @@
     },
     {
       "file": "src/test/setup.ts",
-      "description": "before each test we delete the collection so test does not affect each others.",
+      "description": "Before each test we delete the collection so tests do not affect each others.",
       "line": 17
     },
     {
       "file": "src/test/setup.ts",
-      "description": "after all the tests are completed we close the database.",
+      "description": "After all the tests are completed we close the database.",
       "line": 21
     },
     {
       "file": "src/createConnection.ts",
-      "description": "Take note that we need to separate the connection code from the project index.\n\nIn development or production cases, we call this function with the uri of a functioning database\n\nIn test case we call this function with the in memory database",
+      "description": "Take note that we need to separate the connection code from the project `index`.\n\nIn development or production cases, we call this function with the uri of a functioning database\n\nIn test case we call this function with the in-memory database",
       "line": 11
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "file": "src/index.ts",
-      "description": "`index.ts` is responsible to create the connection and the server for production.\n\nThis is not what we will test.",
+      "description": "`index.ts` is responsible to create the connection and the server for production.\n\n**This is not what we will test.**",
       "line": 22,
       "selection": {
         "start": {
@@ -58,7 +58,7 @@
     },
     {
       "file": "src/resolvers/WilderResolver.ts",
-      "description": "We want to test the resolver for the wilder entity.",
+      "description": "We want to test the wilder resolver.",
       "line": 1,
       "selection": {
         "start": {
@@ -74,12 +74,12 @@
     {
       "file": "src/resolvers/WilderResolver.ts",
       "description": "Is the mutation correctly saving a wilder in the database ?",
-      "line": 21
+      "line": 18
     },
     {
       "file": "src/resolvers/WilderResolver.ts",
       "description": "Is the query correctly retrieving the wilders from the database ?",
-      "line": 12
+      "line": 10
     },
     {
       "file": "src/resolvers/WilderResolver.test.ts",
